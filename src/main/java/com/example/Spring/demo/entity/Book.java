@@ -14,6 +14,6 @@ public class Book {
     private String title;
     private String author;
 
-    @OneToMany(targetEntity = Lessons.class, cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToMany(targetEntity = Lessons.class, cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<Lessons> lessonsList;
 }
