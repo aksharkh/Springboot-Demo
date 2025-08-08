@@ -1,4 +1,4 @@
-package com.example.Spring.demo.service;
+package com.example.Spring.demo.service.serviceImpl;
 
 
 import com.example.Spring.demo.dto.BookDto;
@@ -6,6 +6,7 @@ import com.example.Spring.demo.dto.BookRequestDTO;
 import com.example.Spring.demo.entity.Book;
 import com.example.Spring.demo.exceptions.NotFound;
 import com.example.Spring.demo.repository.BookRepository;
+import com.example.Spring.demo.service.service.BookService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class BookServiceImpl implements BookService{
+public class BookServiceImpl implements BookService {
     private final BookRepository bookRepository;
     private final ModelMapper modelMapper;
     @Override

@@ -1,9 +1,11 @@
-package com.example.Spring.demo.service;
+package com.example.Spring.demo.service.serviceImpl;
 
 
 import com.example.Spring.demo.dto.EmployeeDto;
 import com.example.Spring.demo.entity.Employee;
+import com.example.Spring.demo.exceptions.NotFound;
 import com.example.Spring.demo.repository.EmployeeRepository;
+import com.example.Spring.demo.service.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -31,5 +33,13 @@ public class EmployeeServiceImpl implements EmployeeService {
         List<Employee> employees = employeeRepository.findAll();
         return  employees.stream().map(employee -> modelMapper.map(employee, EmployeeDto.class)).collect(Collectors.toList());
 
+    }
+
+    @Override
+    public  EmployeeDto updateEmployee(Long id, EmployeeDto employeeDto){
+        Employee employee=employeeRepository.findById(id).orElseThrow(() -> new NotFound("ID not found"+id));
+        modelMapper.map(employeeDto, employee);
+        Employee updated=employeeRepository.save(employee);
+        return  modelMapper.map(updated, EmployeeDto.class);
     }
 }

@@ -3,7 +3,7 @@ package com.example.Spring.demo.controller;
 
 import com.example.Spring.demo.dto.BookDto;
 import com.example.Spring.demo.dto.BookRequestDTO;
-import com.example.Spring.demo.service.BookService;
+import com.example.Spring.demo.service.service.BookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

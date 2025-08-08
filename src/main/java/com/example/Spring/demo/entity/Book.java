@@ -1,10 +1,9 @@
 package com.example.Spring.demo.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 @Entity
@@ -14,4 +13,7 @@ public class Book {
     private Long id;
     private String title;
     private String author;
+
+    @OneToMany(targetEntity = Lessons.class, cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<Lessons> lessonsList;
 }

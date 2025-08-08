@@ -1,4 +1,4 @@
-package com.example.Spring.demo.service;
+package com.example.Spring.demo.service.service;
 
 import com.example.Spring.demo.dto.BookDto;
 import com.example.Spring.demo.dto.BookRequestDTO;

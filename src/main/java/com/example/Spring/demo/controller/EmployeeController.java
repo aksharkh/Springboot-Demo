@@ -2,9 +2,7 @@ package com.example.Spring.demo.controller;
 
 
 import com.example.Spring.demo.dto.EmployeeDto;
-import com.example.Spring.demo.entity.Employee;
-import com.example.Spring.demo.repository.EmployeeRepository;
-import com.example.Spring.demo.service.EmployeeService;
+import com.example.Spring.demo.service.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,5 +24,11 @@ public class EmployeeController {
     public ResponseEntity<List<EmployeeDto>> getAllEmployee(){
         List<EmployeeDto> employees = employeeService.getAllEmployee();
         return ResponseEntity.ok(employees);
+    }
+
+    @PutMapping("update/{id}")
+    public ResponseEntity<EmployeeDto> updateEmployee(@PathVariable Long id,@RequestBody EmployeeDto employeeDto){
+        EmployeeDto updated= employeeService.updateEmployee(id,employeeDto);
+        return  ResponseEntity.ok(updated);
     }
 }
