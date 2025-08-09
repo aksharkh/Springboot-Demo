@@ -4,6 +4,7 @@ package com.example.Spring.demo.controller;
 import com.example.Spring.demo.dto.BookDto;
 import com.example.Spring.demo.dto.BookRequestDTO;
 import com.example.Spring.demo.service.service.BookService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,7 @@ public class BookController {
     private final BookService bookService;
 
     @PostMapping
-    public ResponseEntity<BookDto> createBook(@RequestBody BookRequestDTO  bookDto){
+    public ResponseEntity<BookDto> createBook(@Valid  @RequestBody BookRequestDTO  bookDto){
         BookDto createdBook = bookService.createBook(bookDto);
         return ResponseEntity.ok(createdBook);
     }

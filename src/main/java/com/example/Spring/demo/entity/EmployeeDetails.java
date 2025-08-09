@@ -3,6 +3,8 @@ package com.example.Spring.demo.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 @Entity
 public class EmployeeDetails {
@@ -12,6 +14,6 @@ public class EmployeeDetails {
     private Long employeeDetailsId;
     private String role;
     private String work;
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    private EmployeeCompany company;
+    @OneToMany(cascade = CascadeType.ALL,targetEntity = EmployeeCompany.class)
+    private List<EmployeeCompany> company;
 }
