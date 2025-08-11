@@ -6,6 +6,8 @@ import com.example.Spring.demo.dto.BookRequestDTO;
 import com.example.Spring.demo.service.service.BookService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,8 +25,8 @@ public class BookController {
         return ResponseEntity.ok(createdBook);
     }
     @GetMapping
-    public ResponseEntity<List<BookDto>> getAllBooks(){
-        List<BookDto> allBooks= bookService.getAllBooks();
+    public ResponseEntity<Page<BookDto>> getAllBooks(Pageable pageable){
+        Page<BookDto> allBooks= bookService.getAllBooks(pageable);
         return ResponseEntity.ok(allBooks);
     }
     @GetMapping("/{id}")

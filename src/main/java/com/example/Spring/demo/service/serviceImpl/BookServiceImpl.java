@@ -11,6 +11,8 @@ import com.example.Spring.demo.repository.BookRepository;
 import com.example.Spring.demo.service.service.BookService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -30,9 +32,9 @@ public class BookServiceImpl implements BookService {
 
     }
     @Override
-    public List<BookDto> getAllBooks(){
-        List<Book> books= bookRepository.findAll();
-        return  books.stream().map(book -> modelMapper.map(book, BookDto.class)).collect(Collectors.toList());
+    public Page<BookDto> getAllBooks(Pageable pageable){
+        Page<Book> books= bookRepository.findAll(pageable);
+        return  books.map(book -> modelMapper.map(book, BookDto.class));
     }
     @Override
     public BookDto getBookById(Long id){
