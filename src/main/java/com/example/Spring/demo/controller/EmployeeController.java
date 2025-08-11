@@ -3,6 +3,7 @@ package com.example.Spring.demo.controller;
 
 import com.example.Spring.demo.dto.EmployeeDto;
 import com.example.Spring.demo.service.service.EmployeeService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +17,7 @@ public class EmployeeController {
     public final EmployeeService employeeService;
 
     @PostMapping
-    public ResponseEntity<EmployeeDto> createEmployee(@RequestBody EmployeeDto employeeDto){
+    public ResponseEntity<EmployeeDto> createEmployee(@Valid @RequestBody EmployeeDto employeeDto){
         EmployeeDto employee= employeeService.createEmployee(employeeDto);
         return ResponseEntity.ok(employee);
     }
