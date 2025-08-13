@@ -38,7 +38,9 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws  Exception{
         http
                 .csrf(csrf -> csrf.disable())
+                .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/book").hasAnyRole("ADMIN", "USER")
                         .requestMatchers(HttpMethod.PUT,"/book/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE,"/book/**").hasRole("ADMIN")

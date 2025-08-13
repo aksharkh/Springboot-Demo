@@ -20,6 +20,6 @@ public class Book {
 
     private String author;
 
-    @OneToMany(targetEntity = Lessons.class, cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<Lessons> lessonsList;
 }

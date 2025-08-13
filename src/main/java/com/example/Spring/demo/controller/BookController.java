@@ -1,6 +1,5 @@
 package com.example.Spring.demo.controller;
 
-
 import com.example.Spring.demo.dto.BookDto;
 import com.example.Spring.demo.dto.BookRequestDTO;
 import com.example.Spring.demo.service.service.BookService;
@@ -10,8 +9,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/book")
